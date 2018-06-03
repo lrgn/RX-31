@@ -11,6 +11,7 @@ public:
 
 	virtual void update() = 0;
 	virtual void draw() const = 0;
+	virtual bool shouldBeRemoved() const = 0;
 };
 
 #endif

@@ -12,3 +12,8 @@ void Missile::update()
 {
 	this->x++;
 }
+
+bool Missile::shouldBeRemoved() const
+{
+	return x > 128;
+}

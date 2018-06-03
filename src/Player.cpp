@@ -11,3 +11,8 @@ void Player::draw() const
 void Player::update()
 {
 }
+
+bool Player::shouldBeRemoved() const
+{
+	return false;
+}

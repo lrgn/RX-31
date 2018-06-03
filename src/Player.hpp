@@ -8,6 +8,7 @@ class Player : public Entity
 public:
 	void draw() const;
 	void update();
+	bool shouldBeRemoved() const;
 };
 
 #endif
