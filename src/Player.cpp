@@ -5,7 +5,7 @@ extern Arduboy2 arduboy;
 
 void Player::draw() const
 {
-	arduboy.drawRect(x, y, 8, 8, WHITE);
+	arduboy.drawRect((uint16_t) x, (uint8_t) y, 8, 8, WHITE);
 }
 
 void Player::update()

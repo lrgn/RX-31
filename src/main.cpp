@@ -4,6 +4,7 @@
 #include "DArray.hpp"
 
 #define ENTITIES_MAX_SIZE 20
+#define PLAYER_VELOCITY 1.2
 
 Arduboy2 arduboy;
 Player player;
@@ -21,22 +22,22 @@ void loop()
 	if (!(arduboy.nextFrameDEV()))
 		return;
 
-		arduboy.pollButtons();
+	arduboy.pollButtons();
 
 	if (entities.getSize() == ENTITIES_MAX_SIZE)
-		arduboy.digitalWriteRGB(RGB_ON ,    RGB_OFF  ,  RGB_ON );
-		else
-			arduboy.digitalWriteRGB(RGB_OFF ,    RGB_OFF  ,  RGB_OFF );
+		arduboy.digitalWriteRGB(RGB_ON,    RGB_OFF,  RGB_ON );
+	else
+		arduboy.digitalWriteRGB(RGB_OFF,    RGB_OFF,  RGB_OFF );
 
 
-	if (arduboy.pressed(LEFT_BUTTON) && player.x != 0)
-		player.x--;
-	if (arduboy.pressed(RIGHT_BUTTON) && player.x != 120)
-		player.x++;
-	if (arduboy.pressed(UP_BUTTON) && player.y != 0)
-		player.y--;
-	if (arduboy.pressed(DOWN_BUTTON) && player.y != 56)
-		player.y++;
+	if (arduboy.pressed(LEFT_BUTTON) && player.x >= PLAYER_VELOCITY)
+		player.x -= PLAYER_VELOCITY;
+	if (arduboy.pressed(RIGHT_BUTTON) && player.x <= 120 - PLAYER_VELOCITY)
+		player.x += PLAYER_VELOCITY;
+	if (arduboy.pressed(UP_BUTTON) && player.y >= PLAYER_VELOCITY)
+		player.y -= PLAYER_VELOCITY;
+	if (arduboy.pressed(DOWN_BUTTON) && player.y <= 56 - PLAYER_VELOCITY)
+		player.y += PLAYER_VELOCITY;
 
 	if (arduboy.justPressed(A_BUTTON)) {
 		Missile* missile = new Missile();

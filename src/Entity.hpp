@@ -2,12 +2,13 @@
 #define ENTITY_HPP
 
 #include <stdint.h>
+#include <FixedPoints.h>
 
 class Entity
 {
 public:
-	uint16_t x = 0;
-	uint8_t y = 0;
+	UFixed<14, 2> x = 0;
+	UFixed<6, 2> y = 0;
 
 	virtual void update() = 0;
 	virtual void draw() const = 0;
