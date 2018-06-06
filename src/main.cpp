@@ -30,16 +30,9 @@ void loop()
 		arduboy.digitalWriteRGB(RGB_OFF,    RGB_OFF,  RGB_OFF );
 
 
-	if (arduboy.pressed(LEFT_BUTTON) && player.x >= PLAYER_VELOCITY)
-		player.x -= PLAYER_VELOCITY;
-	if (arduboy.pressed(RIGHT_BUTTON) && player.x <= 120 - PLAYER_VELOCITY)
-		player.x += PLAYER_VELOCITY;
-	if (arduboy.pressed(UP_BUTTON) && player.y >= PLAYER_VELOCITY)
-		player.y -= PLAYER_VELOCITY;
-	if (arduboy.pressed(DOWN_BUTTON) && player.y <= 56 - PLAYER_VELOCITY)
-		player.y += PLAYER_VELOCITY;
 
-	if (arduboy.justPressed(A_BUTTON)) {
+	if (arduboy.justPressed(A_BUTTON))
+	{
 		Missile* missile = new Missile();
 		missile->x = player.x + 8;
 		missile->y = player.y + 4;
