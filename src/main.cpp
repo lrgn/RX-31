@@ -1,20 +1,27 @@
 #include <Arduboy2.h>
 #include "Player.hpp"
-#include "Missile.hpp"
-#include "DArray.hpp"
+#include "BurgerShip.hpp"
+#include "Game.hpp"
 
-#define ENTITIES_MAX_SIZE 20
 #define PLAYER_VELOCITY 1.2
 
 Arduboy2 arduboy;
-Player player;
-DArray<Entity *> entities(ENTITIES_MAX_SIZE);
+Game game;
 
 void setup()
 {
+	//Serial.begin(9600);
 	arduboy.begin();
 	arduboy.setFrameRate(60);
-	entities.add(&player);
+
+	Player* player = new Player();
+	player->resetVelocity();
+	game.spawnEntity(player);
+
+	BurgerShip* burg = new BurgerShip();
+	burg->x = 120;
+	burg->y = 28;
+	game.spawnEntity(burg);
 }
 
 void loop()
@@ -23,39 +30,9 @@ void loop()
 		return;
 
 	arduboy.pollButtons();
-
-	if (entities.getSize() == ENTITIES_MAX_SIZE)
-		arduboy.digitalWriteRGB(RGB_ON,    RGB_OFF,  RGB_ON );
-	else
-		arduboy.digitalWriteRGB(RGB_OFF,    RGB_OFF,  RGB_OFF );
-
-
-
-	if (arduboy.justPressed(A_BUTTON))
-	{
-		Missile* missile = new Missile();
-		missile->x = player.x + 8;
-		missile->y = player.y + 4;
-		if (!entities.add(missile))
-			delete missile;
-	}
+	game.update();
 
 	arduboy.clear();
-
-	for (uint8_t i = 0; i != entities.getSize(); i++)
-		entities.get(i)->update();
-	for (uint8_t i = 0; i != entities.getSize(); i++)
-		entities.get(i)->draw();
-	for (uint8_t i = 0; i != entities.getSize(); i++)
-	{
-		Entity* entity = entities.get(i);
-		if (entity->shouldBeRemoved())
-		{
-			entities.removeAt(i);
-			delete entity;
-			i--;
-		}
-	}
-
+	game.draw();
 	arduboy.display();
 }

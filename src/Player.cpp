@@ -1,17 +1,11 @@
 #include "Player.hpp"
-#include <Arduboy2.h>
+#include "globals.h"
+#include "Missile.hpp"
 
-
-
-
-#define moveLeft(velocity)  if (this->x >= velocity) this->x = this->x - velocity;
-#define moveRight(velocity) if (this->x <= 120 - velocity) this->x = this->x + velocity;
-#define moveUp(velocity)    if (this->y >= velocity) this->y -= velocity;
-#define moveDown(velocity)  if (this->y <= 56 - velocity) this->y += velocity;
-
-extern Arduboy2 arduboy;
-
-
+#define moveLeft(velocity)  if (this->x >= velocity) this->x = this->x - velocity
+#define moveRight(velocity) if (this->x + velocity <= 120) this->x = this->x + velocity
+#define moveUp(velocity)    if (this->y >= velocity) this->y -= velocity
+#define moveDown(velocity)  if (this->y + velocity <= 56) this->y += velocity
 
 void Player::draw() const
 {
@@ -50,11 +44,19 @@ void Player::update()
 	}
 	else if (arduboy.pressed(UP_BUTTON))
 	{
-		moveDown(velocity);
+		moveUp(velocity);
 	}
 	else if (arduboy.pressed(DOWN_BUTTON))
 	{
 		moveDown(velocity);
+	}
+
+	if (arduboy.justPressed(A_BUTTON))
+	{
+		Missile* missile = new Missile();
+		missile->x = this->x + 8;
+		missile->y = this->y + 4;
+		game.spawnEntity(missile);
 	}
 }
 
