@@ -15,5 +15,15 @@ void Missile::update()
 
 bool Missile::shouldBeRemoved() const
 {
-	return x > 128;
+	return x > 128 || Entity::shouldBeRemoved();
+}
+
+Rect Missile::getCollisionBox() const
+{
+	Rect collisionBox;
+	collisionBox.x = (uint16_t)x;
+	collisionBox.y = (uint8_t)y;
+	collisionBox.height = 1;
+	collisionBox.width = 2;
+	return collisionBox;
 }

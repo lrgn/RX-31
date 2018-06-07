@@ -60,10 +60,16 @@ void Player::update()
 	}
 }
 
-bool Player::shouldBeRemoved() const
+Rect Player::getCollisionBox() const
 {
-	return false;
+	Rect collisionBox;
+	collisionBox.x = (uint16_t)x;
+	collisionBox.y = (uint8_t)y;
+	collisionBox.height = 8;
+	collisionBox.width = 8;
+	return collisionBox;
 }
+
 
 void Player::resetVelocity()
 {

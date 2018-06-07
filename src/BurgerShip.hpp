@@ -8,7 +8,7 @@ class BurgerShip : public Entity
 public:
 	void draw() const;
 	void update();
-	bool shouldBeRemoved() const;
+	Rect getCollisionBox() const;
 };
 
 #endif
