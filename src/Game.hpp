@@ -1,8 +1,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "DArray.hpp"
-#include "Entity.hpp"
+#include "utils/DArray.hpp"
+#include "entity/Entity.hpp"
 
 #define ENTITIES_MAX_SIZE 20
 

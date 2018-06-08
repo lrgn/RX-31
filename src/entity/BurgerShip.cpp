@@ -15,7 +15,6 @@ void BurgerShip::update()
 {
 }
 
-
 Rect BurgerShip::getCollisionBox() const
 {
 	Rect collisionBox;

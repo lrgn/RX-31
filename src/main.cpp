@@ -1,6 +1,6 @@
 #include <Arduboy2.h>
-#include "Player.hpp"
-#include "BurgerShip.hpp"
+#include "entity/Player.hpp"
+#include "entity/BurgerShip.hpp"
 #include "Game.hpp"
 
 #define PLAYER_VELOCITY 1.2

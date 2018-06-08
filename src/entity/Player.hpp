@@ -8,6 +8,7 @@
 
 class Player : public Entity
 {
+private:
 	UFixed<6, 2> velocity = INITIAL_VELOCITY;
 	UFixed<6, 2> diagonalVelocity = INITIAL_VELOCITY;
 

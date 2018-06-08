@@ -1,5 +1,9 @@
 #include "Entity.hpp"
 
+Entity::~Entity()
+{
+}
+
 bool Entity::shouldBeRemoved() const
 {
 	return toRemove;
