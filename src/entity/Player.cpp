@@ -2,6 +2,9 @@
 #include "globals.h"
 #include "Missile.hpp"
 
+#include "data/bitmaps.h"
+#include <Sprites.h>
+
 #define moveLeft(velocity)  if (this->x >= velocity) this->x = this->x - velocity
 #define moveRight(velocity) if (this->x + velocity <= 120) this->x = this->x + velocity
 #define moveUp(velocity)    if (this->y >= velocity) this->y -= velocity
@@ -9,7 +12,8 @@
 
 void Player::draw() const
 {
-	arduboy.drawRect((uint16_t) x, (uint8_t) y, 8, 8, WHITE);
+//	arduboy.drawRect((uint16_t) x, (uint8_t) y, 8, 8, WHITE);
+	Sprites::drawPlusMask((uint16_t) x, (uint8_t) y, sprites_plus_mask, SPR_PLAYER);
 }
 
 void Player::update()
