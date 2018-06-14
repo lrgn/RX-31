@@ -74,7 +74,6 @@ Rect Player::getCollisionBox() const
 	return collisionBox;
 }
 
-
 void Player::resetVelocity()
 {
 	velocity  = INITIAL_VELOCITY;

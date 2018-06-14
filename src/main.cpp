@@ -1,6 +1,7 @@
 #include <Arduboy2.h>
 #include "entity/Player.hpp"
 #include "entity/BurgerShip.hpp"
+#include "entity/Booster.hpp"
 #include "Game.hpp"
 
 #define PLAYER_VELOCITY 1.2
@@ -22,6 +23,11 @@ void setup()
 	burg->x = 120;
 	burg->y = 28;
 	game.spawnEntity(burg);
+
+	Booster* booster = new Booster();
+	booster->x = 120;
+	booster->y = 14;
+	game.spawnEntity(booster);
 }
 
 void loop()

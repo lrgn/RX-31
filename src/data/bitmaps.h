@@ -4,7 +4,7 @@
 #include <Arduboy2.h>
 
 #define SPR_PLAYER 0
-#define SPR_ENEMI1 1
+#define SPR_BOOSTER 1
 #define SPR_ENEMI2 2
 #define SPR_ENEMI3_ANIM1 3
 #define SPR_ENEMI3_ANIM2 4
