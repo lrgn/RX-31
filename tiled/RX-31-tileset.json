@@ -1,0 +1,12 @@
+{ "columns":1,
+ "image":"..\/assets\/tiles_8x8.png",
+ "imageheight":40,
+ "imagewidth":8,
+ "margin":0,
+ "name":"RX-31",
+ "spacing":0,
+ "tilecount":5,
+ "tileheight":8,
+ "tilewidth":8,
+ "type":"tileset"
+}
