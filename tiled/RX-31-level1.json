@@ -11,8 +11,54 @@
          "width":55,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"entities",
+         "objects":[
+                {
+                 "height":0,
+                 "id":1,
+                 "name":"Booster",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":156,
+                 "y":48
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"Booster",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":148,
+                 "y":32
+                }, 
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"Booster",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":140,
+                 "y":16
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "properties":
     {

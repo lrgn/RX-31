@@ -1,6 +1,10 @@
 #ifndef LEVELS_H
 #define LEVELS_H
 
+#include "Arduboy2.h"
+#define ENT_BOOSTER 1
+#define ENT_BURGERSHIP 2
+#define LVL_LEVEL1 1
 const unsigned char PROGMEM level1Data[] =
 {
 // width, height,
@@ -14,5 +18,12 @@ const unsigned char PROGMEM level1Data[] =
 	3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,0,0,0,0,0,0,0,0,0,4,
 	1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,0,0,0,0,0,0,0,0,4,4,
 	2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,4,4,4,4,4,4,4,4,4,4
-}
+};
+const unsigned char PROGMEM level1entitiesData[] =
+{
+	9,
+	ENT_BOOSTER,156,48,
+	ENT_BOOSTER,148,32,
+	ENT_BOOSTER,140,16
+};
 #endif
