@@ -1,8 +1,11 @@
 #include "Game.hpp"
 #include "globals.h"
 
+#include "generated/levels.h"
+
 Game::Game()
-	: entities(ENTITIES_MAX_SIZE)
+	: level(createLevel(LVL_LEVEL1))
+	,entities(ENTITIES_MAX_SIZE)
 {
 }
 
@@ -20,6 +23,8 @@ void Game::spawnEntity(Entity* entity)
 
 void Game::update()
 {
+level->update ();
+
 	// Update all entites
 	for (uint8_t i = 0; i != entities.getSize(); i++)
 		entities.get(i)->update();
@@ -57,6 +62,8 @@ void Game::update()
 
 void Game::draw() const
 {
+level->draw();
+
 	for (uint8_t i = 0; i != entities.getSize(); i++)
 		entities.get(i)->draw();
 }

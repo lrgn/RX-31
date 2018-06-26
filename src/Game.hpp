@@ -3,12 +3,14 @@
 
 #include "utils/DArray.hpp"
 #include "entity/Entity.hpp"
+#include "Level.hpp"
 
 #define ENTITIES_MAX_SIZE 20
 
 class Game
 {
 private:
+	Level *level;
 	DArray<Entity *> entities;
 
 public:

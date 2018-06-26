@@ -6,11 +6,15 @@
 
 class Level {
 private:
+	uint8_t* levelData;
 	DArray<Entity *> entities;
+	uint16_t startX = 0;
 
 public:
 	Level(const uint8_t *levelData, const uint8_t *entitiesData);
 
+	void draw() const;
+	void update();
 };
 
 #endif
