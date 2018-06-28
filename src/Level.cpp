@@ -3,9 +3,11 @@
 #include "entity/Booster.hpp"
 #include "generated/levels.h"
 #include "data/bitmaps.h"
+#include "globals.h"
 
 Level::Level(const uint8_t *levelData, const uint8_t *entitiesData)
 	: levelData(levelData)
+	, width(levelData)
 	,entities(pgm_read_byte(entitiesData))
 {
 	uint8_t* currentAddress = entitiesData;
@@ -28,8 +30,9 @@ Level::Level(const uint8_t *levelData, const uint8_t *entitiesData)
 
 void Level::draw() const
 {
-	uint8_t *currentAddr = levelData + 2 + startX; // = startX / 8(tile size) * 8(screen height in tiles)
-	uint8_t shiftX = startX % 8;
+	uint16_t startTileX = divideBy8(startX);
+	uint8_t shiftX = modulo8(startX);
+	uint8_t *currentAddr = levelData + 2 + multiplyBy8(startTileX);
 
 	for (uint8_t x= 0; x != 17; x++)
 	{
@@ -37,12 +40,13 @@ void Level::draw() const
 		{
 			uint8_t tile = pgm_read_byte(currentAddr++);
 
-          Sprites::drawSelfMasked(x*8 - shiftX, y * 8, tiles, tile);
+			Sprites::drawSelfMasked(x*8 - shiftX, y * 8, tiles, tile);
 		}
 	}
 }
 
 void Level::update()
 {
-	startX++;
+	if (divideBy8(startX) + 16 != width)
+		startX++;
 }

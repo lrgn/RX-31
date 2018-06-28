@@ -23,7 +23,7 @@ void Game::spawnEntity(Entity* entity)
 
 void Game::update()
 {
-level->update ();
+	level->update ();
 
 	// Update all entites
 	for (uint8_t i = 0; i != entities.getSize(); i++)
@@ -62,7 +62,7 @@ level->update ();
 
 void Game::draw() const
 {
-level->draw();
+	level->draw();
 
 	for (uint8_t i = 0; i != entities.getSize(); i++)
 		entities.get(i)->draw();

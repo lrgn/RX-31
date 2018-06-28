@@ -7,6 +7,7 @@
 class Level {
 private:
 	uint8_t* levelData;
+	uint8_t width;
 	DArray<Entity *> entities;
 	uint16_t startX = 0;
 
