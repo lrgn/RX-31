@@ -9,7 +9,7 @@ Level* createLevel(uint8_t levelId);
 #define LVL_LEVEL1 1
 const unsigned char PROGMEM level1Data[] =
 {
-// width, height,
+	// width, height,
 	55, 8,
 	1,2,3,1,2,3,1,2,
 	3,1,2,3,1,2,3,1,

@@ -12,7 +12,7 @@
 
 void Player::draw() const
 {
-//	arduboy.drawRect((uint16_t) x, (uint8_t) y, 8, 8, WHITE);
+	//	arduboy.drawRect((uint16_t) x, (uint8_t) y, 8, 8, WHITE);
 	Sprites::drawPlusMask((uint16_t) x, (uint8_t) y, sprites_plus_mask, SPR_PLAYER);
 }
 

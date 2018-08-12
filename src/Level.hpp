@@ -4,7 +4,8 @@
 #include "entity/Entity.hpp"
 #include "utils/DArray.hpp"
 
-class Level {
+class Level
+{
 private:
 	uint8_t* levelData;
 	uint8_t width;
