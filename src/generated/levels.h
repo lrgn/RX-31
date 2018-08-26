@@ -69,7 +69,7 @@ const unsigned char PROGMEM level1Data[] =
 };
 const unsigned char PROGMEM level1entitiesData[] =
 {
-	9,
+	3,
 	ENT_BOOSTER,156,48,
 	ENT_BOOSTER,148,32,
 	ENT_BOOSTER,140,16
