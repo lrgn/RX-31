@@ -6,6 +6,7 @@
 
 #define PLAYER_VELOCITY 1.2
 
+
 Arduboy2 arduboy;
 Game game;
 
@@ -18,16 +19,6 @@ void setup()
 	Player* player = new Player();
 	player->resetVelocity();
 	game.spawnEntity(player);
-
-	BurgerShip* burg = new BurgerShip();
-	burg->x = 120;
-	burg->y = 28;
-	game.spawnEntity(burg);
-
-	Booster* booster = new Booster();
-	booster->x = 120;
-	booster->y = 14;
-	game.spawnEntity(booster);
 }
 
 void loop()

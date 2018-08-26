@@ -8,11 +8,14 @@
 Level::Level(const uint8_t *levelData, const uint8_t *entitiesData)
 	: levelData(levelData)
 	, width(pgm_read_byte(levelData))
-	,entities(pgm_read_byte(entitiesData))
 {
-	uint8_t* currentAddress = entitiesData;
+	uint8_t size = pgm_read_byte(entitiesData);
 
-	for (uint8_t i = 0; i != entities.getSize(); i++)
+	entities = new DArray<Entity *>(size);
+
+	uint8_t* currentAddress = entitiesData+1;
+
+	for (uint8_t i = 0; i != size; i++)
 	{
 		uint8_t entityType = pgm_read_byte(currentAddress++);
 
@@ -22,7 +25,7 @@ Level::Level(const uint8_t *levelData, const uint8_t *entitiesData)
 			Booster* booster = new Booster();
 			booster->x = pgm_read_byte(currentAddress++);
 			booster->y = pgm_read_byte(currentAddress++);
-			entities.add(booster);
+			entities->add(booster);
 			break;
 		}
 	}
@@ -50,4 +53,15 @@ void Level::update()
 	// Stop level scrolling
 	if (divideBy8(startX) + 16 != width)
 		startX++;
+
+	for (uint8_t i = 0; i != entities->getSize(); i++)
+	{
+		Entity* entity = entities->get(i);
+
+		if (entity->x >= startX && entity->x < startX+128)
+		{
+			game.spawnEntity(entity);
+			entities->removeAt(i--);
+		}
+	}
 }
