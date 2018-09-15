@@ -9,7 +9,12 @@ bool Entity::shouldBeRemoved() const
 	return toRemove;
 }
 
-void Entity::collideWith(Entity* other)
+void Entity::collideWithEntity(Entity* other)
+{
+	toRemove = true;
+}
+
+void Entity::collideWithLevel()
 {
 	toRemove = true;
 }

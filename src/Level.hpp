@@ -17,6 +17,7 @@ public:
 
 	void draw() const;
 	void update();
+	bool collide(Rect collisionBox) const;
 };
 
 #endif

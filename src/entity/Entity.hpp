@@ -19,7 +19,8 @@ public:
 	virtual void draw() const = 0;
 	virtual bool shouldBeRemoved() const;
 
-	void collideWith(Entity* other);
+	void collideWithEntity(Entity* other);
+	void collideWithLevel();
 	virtual Rect getCollisionBox() const = 0;
 };
 

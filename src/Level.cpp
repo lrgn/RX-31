@@ -65,3 +65,23 @@ void Level::update()
 		}
 	}
 }
+
+
+bool Level::collide(Rect collisionBox) const
+{
+	uint16_t startTileX = divideBy8(collisionBox.x);
+	uint16_t startTileY = divideBy8(collisionBox.y);
+	uint16_t stopTileX = divideBy8(collisionBox.x + collisionBox.width - 1);
+	uint16_t stopTileY = divideBy8(collisionBox.y+ collisionBox.height -1 );
+
+	for (uint16_t x = startTileX; x <= stopTileX; x++)
+		for (uint16_t y = startTileY; y <= stopTileY; y++)
+		{
+			uint8_t tile = pgm_read_byte(levelData + 2 + startX +  multiplyBy8(x) + y);
+
+			if (tile == 4)
+				return true;
+		}
+
+	return false;
+}

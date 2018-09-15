@@ -32,16 +32,22 @@ void Game::update()
 	// Check for collision
 	for (uint8_t i = 0; i != entities.getSize(); i++)
 	{
-		Entity* entity1 = entities.get(i);
+		Entity* entity = entities.get(i);
+		Rect collisionBox = entity->getCollisionBox();
 
+		// With the level
+		if (level->collide(collisionBox))
+			entity->collideWithLevel();
+
+		// With other entities
 		for (uint8_t j = i+1; j != entities.getSize(); j++)
 		{
-			Entity* entity2 = entities.get(j);
+			Entity* otherEntity = entities.get(j);
 
-			if (arduboy.collide(entity1->getCollisionBox(), entity2->getCollisionBox()))
+			if (arduboy.collide(collisionBox, otherEntity->getCollisionBox()))
 			{
-				entity1->collideWith(entity2);
-				entity2->collideWith(entity1);
+				entity->collideWithEntity(otherEntity);
+				otherEntity->collideWithEntity(entity);
 			}
 		}
 	}
